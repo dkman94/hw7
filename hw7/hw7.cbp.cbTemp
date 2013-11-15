@@ -34,7 +34,6 @@
 		</Compiler>
 		<Unit filename="BankAccount.h" />
 		<Unit filename="BankAccout.cpp" />
-		<Unit filename="CDAccount.cpp" />
 		<Unit filename="CDAccount.h" />
 		<Unit filename="MoneyMarketAccount.cpp" />
 		<Unit filename="MoneyMarketAccount.h" />

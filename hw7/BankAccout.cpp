@@ -1,56 +1,62 @@
-#include <stdlib.h>
+//include the bank account header file
 #include <iostream>
-
-#include <BankAccount.h>
-
+#include "BankAccount.h"
 using namespace std;
 
-BankAccount::BankAccount(string owner, double balance)
+//define each of the constructors made in the bank account header file
+BankAccount::BankAccount()
 {
-    owner_ = owner;
-    if(balance > 0)
-        balance_ = balance;
-    else
-        cerr<<"C'mon man! Enter a REAL Balance!!!"<<endl;
+    owner = "";
+    balance = 0.0;
 }
 
-void BankAccount::setBalance(double bal)
+BankAccount::BankAccount(string _owner)
 {
-    if(balance > 0)
-        balance_ = balance;
-    else
-        cerr<<"C'mon man! Enter a REAL Balance!!!"<<endl;
+    owner = _owner;
+    balance = 0.0;
 }
 
-double BankAccount::getBalance() const
+BankAccount::BankAccount(string _owner, double _balance)
 {
-    return balance_;
+    owner = _owner;
+    balance = _balance;
 }
 
+//create the get methods. simply return the required variable
+string BankAccount::getOwner()
+{
+    return owner;
+}
+
+double BankAccount::getBalance()
+{
+    return balance;
+}
+
+//create the deposit method which simply adds a amount to a balance
 bool BankAccount::deposit(double amount)
 {
-    if(amount>0)
-        balance_ = balance_+amount;
+    if(amount > 0)
+    {
+        balance += amount;
         return true;
+    }
     else
+    {
         return false;
+    }
 }
 
+//defualt withdraw. this one is not really used since it is overridden later
 bool BankAccount::withdraw(double amount)
 {
-    if(amount > 0 && amount < balance_)
-        balance_ = balance_ - amount;
-        return true;
-    else
-        return false;
+    return true;
 }
 
-double BankAccount::transfer(char* whichAccount, double amount)
+//the transfer method just deposits money from one account to another
+bool BankAccount::transfer(double amount, BankAccount &other)
 {
-    whichAccount->balance_ = whichAccount->balance - amount;
-    this->balance_ = this->balance_ + amount;
-    return balance_;
+    other.deposit(amount);
+    withdraw(amount);
+    return true;
 }
-
-
-
