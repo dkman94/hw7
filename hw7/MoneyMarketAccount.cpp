@@ -4,6 +4,7 @@
 #include <string>
 using namespace std;
 
+//create moneymarket constructors. first is default, then owner only, then owner and balance
 MoneyMarket::MoneyMarket()
     : BankAccount()
 {
@@ -28,6 +29,7 @@ MoneyMarket::MoneyMarket(string _owner, double _balance)
     numWithdraws = 0;
 }
 
+//create the deposit class. simply add the amount to the balance
 bool MoneyMarket::deposit(double amount)
 {
     if(amount > 0)
@@ -41,27 +43,32 @@ bool MoneyMarket::deposit(double amount)
     }
 }
 
+//withdraw function for moneymarket accounts
 bool MoneyMarket::withdraw(double amount)
 {
     if((balance > amount) && (amount > 0))
     {
+//if the number of withdraws is greater than 2, then subtract an additional fee of $1.50
         if(numWithdraws > 2)
         {
             balance -= (amount + 1.50);
         }
         else
         {
+//if the number of withdraws is less than 2, then subtract only the amount
             balance -=amount;
         }
-        numWithdraws++; // not updating
+        numWithdraws++;
         return true;
     }
     else
     {
+//else return false
         return false;
     }
 }
 
+//recreate the transfer method for the moneymarket class
 bool MoneyMarket::transfer(double amount, BankAccount &other)
 {
     other.deposit(amount);

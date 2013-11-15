@@ -1,3 +1,7 @@
+//include all header files in main
+//Created On: 11/15/13
+//Created By: Deepak Kumar
+//Description: Create a bank account with MoneyMarket and CDAccounts
 #include "CDAccount.h"
 #include "MoneyMarketAccount.h"
 #include "BankAccount.h"
@@ -8,11 +12,15 @@
 using namespace std;
 int main()
 {
+//create varibales used throughout the testing
     string name;
     double balance;
     double amount;
     double interestRate;
-
+//testing the code
+//withdraw from josh's account(moneymarket) twice
+//withdraw from tracy's account(cdaccount) with a specified interest rate
+//transfer from tracy's acct to josh's acct
     cout << "Enter Josh's MoneyMarketAccount balance: ";
     cin >> balance;
 
