@@ -1,20 +1,29 @@
 #include "MoneyMarketAccount.h"
 #include <iostream>
 
-BankAccount::MoneyMarketAccount MoneyMarketAccount(string owner, int balance)
+BankAccount::MoneyMarketAccount(string owner, double balance)
 {
-    owner_ = owner;
-    balance_ = balance;
+    MoneyMarketAccount::setOwner(owner);
+    MoneyMarketAccount::setBalance(balance);
 }
-
-bool withdraw(double amount)
+bool MoneyMarketAccount::withdraw(double amount)
 {
-    if(amount>balance)
+    if(amount>MoneyMarketAccount::getBalance())
+    {
         return false;
-    else if(numWithdraws <= 2)
-        balance = balance-amount;
+    }
+    if(numWithdraws <= 2)
+    {
+        MoneyMarketAccount::setBalance(MoneyMarketAccount::getBalance()-amount);
+        numWithdraws++;
         return true;
-    else if(numWithdraws > 2)
-        balance = balance-amount-1.5;
+    }
+    if(numWithdraws > 2)
+    {
+        MoneyMarketAccount::setBalance(MoneyMarketAccount::getBalance()-amount-1.5);
+        numWithdraws++;
+        return true;
+    }
+
 }
 

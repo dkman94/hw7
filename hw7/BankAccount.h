@@ -7,23 +7,20 @@ using namespace std;
 class BankAccount
 {
 public:
-    string getName()
-    {
-        return owner;
-    }
-    double getBalance()
-    {
-       return balance;
-    }
-    bool deposit(double amount)
-    {
-        balance=balance+amount;
-    }
+    BankAccount(string owner, double balance);
+    bool deposit(double amount);
     virtual bool withdraw(double amount) = 0;
+    virtual double transfer(char whichAccount, double amount) = 0;
 
 protected:
     double balance_;
     string owner_;
+
+    void setBalance(double bal);
+    void setOwner(string name);
+
+    double getBalance() const;
+    string getOwner() const;
 
 };
 

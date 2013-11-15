@@ -3,21 +3,12 @@
 
 #include "BankAccount.h"
 
-class MoneyMarketAccount
+class MoneyMarketAccount : public BankAccount
 {
 public:
-    MoneyMarketAccount(string owner, int balance);
+    MoneyMarketAccount(string owner, double balance);
     int numWithdraws;
-    bool withdraw(double amount)
-    {
-        if(amount>balance)
-            return false;
-        else if(numWithdraws <= 2)
-            balance = balance-amount;
-            return true;
-        else if(numWithdraws > 2)
-            balance = balance-amount-1.5;
-    }
+    bool withdraw(double amount);
 
 };
 
